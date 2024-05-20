@@ -1,9 +1,10 @@
-import React from 'react';
 import { Tabs } from 'expo-router';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import HomeFill from "../../assets/svg/navfillHome.svg" 
+import Heart from "../../assets/svg/navHeart.svg" 
+import Avatar from "../../assets/svg/navAvatar.svg" 
+import Re from "../../assets/svg/navRe.svg" 
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -13,13 +14,14 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
+        tabBarShowLabel:false,
       }}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          tabBarIcon: () => (
+            <HomeFill width={24} height={24}/>
           ),
         }}
       />
@@ -27,8 +29,26 @@ export default function TabLayout() {
         name="explore"
         options={{
           title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+          tabBarIcon: () => (
+            <Heart width={24} height={24}/>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Explore',
+          tabBarIcon: () => (
+          <Avatar width={24} height={24}/>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="round"
+        options={{
+          title: 'Explore',
+          tabBarIcon: () => (
+          <Re width={26} height={26} fill={"gray"}/>
           ),
         }}
       />

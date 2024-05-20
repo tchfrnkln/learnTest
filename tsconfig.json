@@ -33,6 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "svg.d.ts",
+    "app.d.ts",
+    "expo-env.d.ts"
   ]
 }
