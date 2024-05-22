@@ -15,7 +15,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
         tabBarShowLabel:false,
-      }}>
+      }} initialRouteName='index'>
       <Tabs.Screen
         name="index"
         options={{
