@@ -3,9 +3,17 @@ import NavBar from "../../assets/svg/navigation.svg"
 import Cart from "../../assets/svg/cart.svg"
 import Search from "../../assets/svg/search.svg"
 import Veggie from "../../assets/svg/veggie.svg"
+import Sauce from "../../assets/svg/sauce.svg"
 
 
 export default function HomeScreen() {
+
+  const foods:{key:number, name:string, price:number, img:any}[] = [
+    {key:1, name:"Veggie tomato mix", price:1900, img:<Veggie/>},
+    {key:2, name:"Spicy fish sauce", price:2300.99, img:<Sauce/>},
+  ]
+
+
   return (
     <View className='bg-[#F2F2F2]'>
       <View className='mt-[60px] px-[50px]'>
@@ -32,13 +40,17 @@ export default function HomeScreen() {
         <View className='mt-[45px]'>
           <Text className='w-full text-right text-[#FA4A0C] text-[15px]'>see more</Text>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
-            <View className='mt-[1px] w-[220px] h-[320px] relative flex justify-start items-center'>
-              <View className='absolute w-[220px] h-[270px] rounded-[30px] bg-[#FFFFFF] top-[50px]'>
-                <Text className='text-[22px] text-center mt-[145px] font-bold px-[20%]'>Veggie tomato mix</Text>
-                <Text className='text-[17px] text-[#FA4A0C] text-center font-bold mt-[15px]'>N1,900</Text>
-              </View>
-              <Veggie/>
-            </View>
+            {
+              foods.map(food => (
+                <View className='mt-[1px] mr-[34px] w-[220px] h-[320px] relative flex justify-start items-center' key={food.key}>
+                  <View className='absolute w-[220px] h-[270px] rounded-[30px] bg-[#FFFFFF] top-[50px]'>
+                    <Text className='text-[22px] text-center mt-[145px] font-bold px-[20%]'>{food.name}</Text>
+                    <Text className='text-[17px] text-[#FA4A0C] text-center font-bold mt-[15px]'>N{food.price.toLocaleString()}</Text>
+                  </View>
+                  {food.img}
+                </View>
+              ))
+            }
           </ScrollView>
         </View>
       </View>

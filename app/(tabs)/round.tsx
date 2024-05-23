@@ -1,102 +1,60 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Image, Platform } from 'react-native';
+import { ScrollView, StatusBar, Text, TextInput, View } from 'react-native';
+import NavBar from "../../assets/svg/navigation.svg"
+import Cart from "../../assets/svg/cart.svg"
+import Search from "../../assets/svg/search.svg"
+import Veggie from "../../assets/svg/veggie.svg"
+import Sauce from "../../assets/svg/sauce.svg"
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 
-export default function TabTwoScreen() {
+export default function HomeScreen() {
+
+  const foods:{key:number, name:string, price:number, img:any}[] = [
+    {key:1, name:"Veggie tomato mix", price:1900, img:<Veggie/>},
+    {key:2, name:"Spicy fish sauce", price:2300.99, img:<Sauce/>},
+  ]
+
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText> library
-          to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <View className='bg-[#F2F2F2]'>
+      <View className='mt-[60px] px-[50px]'>
+        <View className='w-full flex-row justify-between items-end'>
+          <NavBar/>
+          <Cart/>
+        </View>
+        <View className='mt-[43px] flex flex-col'>
+          <Text className='text-[34px] font-bold'>Delicious</Text>
+          <Text className='text-[34px] font-bold'>food for you</Text>
+        </View>
+        <View className='mt-[28px] p-[20px] pl-[35px] w-full bg-[#EFEEEE] rounded-full flex flex-row justify-start items-center'>
+          <Search/>
+          <TextInput className='pl-[16px] text-[17px]' placeholder='Search'/>
+        </View>
+        <View className='mt-[46px] ml-[75px]'>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
+            <Text className='w-[87px] border-b-2 border-[#FA4A0C] text-center text-[#FA4A0C] pb-[10px] text-[17px]'>Food</Text>
+            <Text className='w-[87px] text-center text-[#9A9A9D] pb-[10px] text-[17px]'>Drinks</Text>
+            <Text className='w-[87px] text-center text-[#9A9A9D] pb-[10px] text-[17px]'>Snacks</Text>
+            <Text className='w-[87px] text-center text-[#9A9A9D] pb-[10px] text-[17px]'>Sauce</Text>
+          </ScrollView>
+        </View>
+        <View className='mt-[45px]'>
+          <Text className='w-full text-right text-[#FA4A0C] text-[15px]'>see more</Text>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
+            {
+              foods.map(food => (
+                <View className='mt-[1px] mr-[34px] w-[220px] h-[320px] relative flex justify-start items-center' key={food.key}>
+                  <View className='absolute w-[220px] h-[270px] rounded-[30px] bg-[#FFFFFF] top-[50px]'>
+                    <Text className='text-[22px] text-center mt-[145px] font-bold px-[20%]'>{food.name}</Text>
+                    <Text className='text-[17px] text-[#FA4A0C] text-center font-bold mt-[15px]'>N{food.price.toLocaleString()}</Text>
+                  </View>
+                  {food.img}
+                </View>
+              ))
+            }
+          </ScrollView>
+        </View>
+      </View>
+      <StatusBar backgroundColor='#FA4A0C' barStyle='light-content'/>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-});

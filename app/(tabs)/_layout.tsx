@@ -26,16 +26,16 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="cart"
         options={{
-          title: 'Explore',
+          title: 'Cart',
           tabBarIcon: () => (
             <Heart width={24} height={24}/>
           ),
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="checkout"
         options={{
           title: 'Explore',
           tabBarIcon: () => (
