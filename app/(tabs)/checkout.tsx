@@ -2,9 +2,17 @@ import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import BackArrow from "../../assets/svg/backarrow.svg";
 import Card from "../../assets/svg/card.svg";
 import Bank from "../../assets/svg/bank.svg";
+import { Paystack } from "react-native-paystack-webview";
+import { useState } from 'react';
+import { PAYSTACK_API_KEY } from '@/constants/Utils';
+import { createTransaction} from '@/api/transaction.request';
 
 export default function TabTwoScreen() {
 
+  const [pay, setPay] = useState(false)
+  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWY4Yzg0NGI5MWY1YzdiZmY0OWY1OSIsImlhdCI6MTcxNjYzNTgxOSwiZXhwIjoxNzE2OTM1ODE5fQ.683wiA8Nibj3DXTAfSCmvz4RvC4VJQb3ckpS_K3_AAY"
+  
+  
   return (
     <View className='h-screen bg-[#F5F5F8] relative'>
       <View className='mt-[60px] px-[50px] w-full flex flex-row relative'>
@@ -64,10 +72,39 @@ export default function TabTwoScreen() {
         </View>
       </View>
       <View className='absolute bottom-[41px] w-full justify-center items-center px-[50px]'>
-        <TouchableOpacity className="bg-[#FA4A0C] w-full max-w-[314px] rounded-[30px] h-[70px] justify-center items-center" >
-          <Text className="text-center text-[#F6F6F9] font-semibold text-[17px]">Complete Order</Text>
+        <TouchableOpacity className="bg-[#FA4A0C] w-full max-w-[314px] rounded-[30px] h-[70px] justify-center items-center" onPress={() => setPay(true)}>
+          <Text className="text-center text-[#F6F6F9] font-semibold text-[17px]">Proceed to payment</Text>
         </TouchableOpacity>
       </View>
+      {pay && (
+        <Paystack
+          paystackKey={`${PAYSTACK_API_KEY}`}
+          amount={5000}
+          billingEmail={"tchfrnkln@gmail.com"}
+          phone={"08153244501"}
+          activityIndicatorColor="orange"
+          onCancel={(e) => {
+            setPay(false)
+            console.log("canceled", e);
+          }}
+          autoStart={pay}
+          onSuccess={(res) => {
+            setPay(false)
+            console.log("response", res);
+            const data = res.data?.transactionRef;
+            var payload = {
+              "transaction": data.transaction,
+              "trxRef": data.reference,
+              "transactionStatus": "completed",
+              "transactionType": "credit",
+              "amount": 5000*100,
+              "revenueAmount": 4250*100,
+            }
+            
+            createTransaction(payload, accessToken)
+          }}
+        />
+      )}
       <StatusBar backgroundColor='#FA4A0C' barStyle='light-content' />
     </View>
   );
