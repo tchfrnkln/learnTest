@@ -3,14 +3,14 @@ import BackArrow from "../../assets/svg/backarrow.svg";
 import Card from "../../assets/svg/card.svg";
 import Bank from "../../assets/svg/bank.svg";
 import { Paystack } from "react-native-paystack-webview";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PAYSTACK_API_KEY } from '@/constants/Utils';
-import { createTransaction} from '@/api/transaction.request';
+import { createTransaction, handleSignInUser} from '@/api/transaction.request';
 
 export default function TabTwoScreen() {
 
   const [pay, setPay] = useState(false)
-  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWY4Yzg0NGI5MWY1YzdiZmY0OWY1OSIsImlhdCI6MTcxNjYzNTgxOSwiZXhwIjoxNzE2OTM1ODE5fQ.683wiA8Nibj3DXTAfSCmvz4RvC4VJQb3ckpS_K3_AAY"
+  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWY4Yzg0NGI5MWY1YzdiZmY0OWY1OSIsImlhdCI6MTcxNjcyMjc2OCwiZXhwIjoxNzE3MDIyNzY4fQ.MdRINh_f4nSTB2UjTHzL0Z55mh6CldE-m6KacNE8npU"
   
   
   return (
