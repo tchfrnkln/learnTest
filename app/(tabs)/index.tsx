@@ -1,4 +1,4 @@
-import { ScrollView, StatusBar, Text, TextInput, View } from 'react-native';
+import { Image, ScrollView, StatusBar, Text, TextInput, View } from 'react-native';
 import NavBar from "../../assets/svg/navigation.svg"
 import Cart from "../../assets/svg/cart.svg"
 import Search from "../../assets/svg/search.svg"
@@ -29,7 +29,7 @@ export default function HomeScreen() {
           <Search/>
           <TextInput className='pl-[16px] text-[17px]' placeholder='Search'/>
         </View>
-        <View className='mt-[46px] ml-[75px]'>
+        <View className='mt-[6px] ml-[75px]'>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
             <Text className='w-[87px] border-b-2 border-[#FA4A0C] text-center text-[#FA4A0C] pb-[10px] text-[17px]'>Food</Text>
             <Text className='w-[87px] text-center text-[#9A9A9D] pb-[10px] text-[17px]'>Drinks</Text>
@@ -37,17 +37,17 @@ export default function HomeScreen() {
             <Text className='w-[87px] text-center text-[#9A9A9D] pb-[10px] text-[17px]'>Sauce</Text>
           </ScrollView>
         </View>
-        <View className='mt-[45px]'>
+        <View className='mt-[5px]'>
           <Text className='w-full text-right text-[#FA4A0C] text-[15px]'>see more</Text>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
             {
               foods.map(food => (
-                <View className='mt-[1px] mr-[34px] w-[220px] h-[320px] relative flex justify-start items-center' key={food.key}>
+                <View className='mt-[1px] mr-[34px] w-[220px] h-[320px] relative flex justify-start items-center shadow-black shadow-lg' key={food.key}>
                   <View className='absolute w-[220px] h-[270px] rounded-[30px] bg-[#FFFFFF] top-[50px]'>
                     <Text className='text-[22px] text-center mt-[145px] font-bold px-[20%]'>{food.name}</Text>
                     <Text className='text-[17px] text-[#FA4A0C] text-center font-bold mt-[15px]'>N{food.price.toLocaleString()}</Text>
                   </View>
-                  {food.img}
+                  <Image className='w-[168px] h-[168px] rounded-full shadow-black shadow-lg' source={require("../../assets/images/veggieHome.jpg")}></Image>
                 </View>
               ))
             }

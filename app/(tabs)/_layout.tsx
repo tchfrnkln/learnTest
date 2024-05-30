@@ -5,6 +5,7 @@ import HomeFill from "../../assets/svg/navfillHome.svg"
 import Heart from "../../assets/svg/navHeart.svg" 
 import Avatar from "../../assets/svg/navAvatar.svg" 
 import Re from "../../assets/svg/navRe.svg" 
+import { View } from 'react-native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -22,7 +23,9 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: () => (
-            <HomeFill width={24} height={24}/>
+            <View className='shadow shadow-[#FA4A0C]'>
+              <HomeFill width={24} height={24}/>
+            </View>
           ),
         }}
       />

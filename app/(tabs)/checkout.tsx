@@ -30,13 +30,16 @@ export default function TabTwoScreen() {
               <View className='w-[15px] h-[15px] rounded-full border-[1px] border-[#FA4A0C] justify-center items-center mr-[15px]'>
                 <View className='w-[7px] h-[7px] bg-[#FA4A0C] rounded-full'></View>
               </View>
-              <View className='border-b-[.5px] w-[70%] flex-row pb-[10px]'>
+              <View className='w-[70%] flex-row justify-start items-center'>
                 <View className='w-[40px] h-[40px] rounded-[10px] bg-[#F47B0A] justify-center items-center mr-[11px]'>
                   <Card/>
                 </View>
                 <Text className='text-[17px] font-medium'>Card</Text>
               </View>
             </TouchableOpacity>
+            <View className='py-[5px] w-full justify-end items-end'>
+              <View className='border-b-[.25px] w-[90%]'></View>
+            </View>
             <TouchableOpacity className='w-[262px] h-[55px] justify-start items-center flex-row'>
               <View className='w-[15px] h-[15px] rounded-full border-[1px] border-[#9F9F9F] justify-center items-center mr-[15px]'>
                 {/* <View className='w-[7px] h-[7px] bg-[#FA4A0C] rounded-full'></View> */}
@@ -51,14 +54,17 @@ export default function TabTwoScreen() {
         <View className='mt-[19px]'>
           <Text className='font-semibold text-[17px]'>Delivery method.</Text>
           <View className='mt-[20px] w-full max-w-[315px] bg-[#FFFFFF] rounded-[20px] p-[20px]'>
-            <TouchableOpacity className='w-[262px] h-[45px] justify-start items-center flex-row'>
+            <TouchableOpacity className='w-[262px] h-[45px] flex-row justify-start items-center'>
               <View className='w-[15px] h-[15px] rounded-full border-[1px] border-[#FA4A0C] justify-center items-center mr-[15px]'>
                 <View className='w-[7px] h-[7px] bg-[#FA4A0C] rounded-full'></View>
               </View>
-              <View className='border-b-[.5px] w-[70%] flex-row pb-[10px]'>
+              <View className='w-[70%] flex-row'>
                 <Text className='text-[17px]'>Door delivery</Text>
               </View>
             </TouchableOpacity>
+            <View className='py-[5px] w-full justify-end items-end'>
+              <View className='border-b-[.25px] w-[90%]'></View>
+            </View>
             <TouchableOpacity className='w-[262px] h-[45px] justify-start items-center flex-row'>
               <View className='w-[15px] h-[15px] rounded-full border-[1px] border-[#9F9F9F] justify-center items-center mr-[15px]'>
               </View>

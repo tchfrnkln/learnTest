@@ -1,7 +1,7 @@
 import { Animated, Image, PanResponder, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import BackArrow from "../../assets/svg/backarrow.svg";
 import Swipe from "../../assets/svg/swipe.svg";
-import { Btn } from '@/components/Button';
+import CartHeart from "../../assets/svg/cartHeart.svg";
 import { useRef, useState } from 'react';
 
 const initialFoods = [
@@ -74,6 +74,34 @@ export default function TabTwoScreen() {
             );
           })
         }
+      </View>
+
+      <View className='mx-[50px]'>
+        <View className='w-full max-w-[315px] flex flex-row justify-end'>
+          <View className='max-w-[315px] h-[102px] bg-[#FFFFFF] rounded-[20px] justify-start items-center flex-row relative mb-[17px]'>
+            <Image className='rounded-full mx-[16px]' width={70} height={70} source={foods[0].img} />
+            <View>
+              <Text className='font-semibold text-[17px]'>{foods[0].name}</Text>
+              <Text className='font-semibold text-[15px] text-[#FA4A0C]'>#{foods[0].price.toLocaleString()}</Text>
+            </View>
+            <View className='w-[52px] h-[20px] bg-[#FA4A0C] rounded-[30px] absolute right-[24px] bottom-[18px] flex-row justify-between items-center'>
+              <TouchableOpacity className='px-2' onPress={() => updateQuantity(foods[0].key, foods[0].quantity - 1)}>
+                <Text className='text-white text-[15px]'>-</Text>
+              </TouchableOpacity>
+              <Text className='text-white text-[15px]'>{foods[0].quantity}</Text>
+              <TouchableOpacity className='px-2' onPress={() => updateQuantity(foods[0].key, foods[0].quantity + 1)}>
+                <Text className='text-white text-[15px]'>+</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View className='flex-row pl-[24px] justify-center items-center'>
+            <TouchableOpacity className='mr-[15px] rounded-full justify-center items-center bg-[#DF2C2C] h-[45px] w-[45px]'>
+              <CartHeart/>
+            </TouchableOpacity>
+            <TouchableOpacity className=' rounded-full justify-center items-center bg-[#DF2C2C] h-[45px] w-[45px]'>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
 
       <View className='absolute bottom-[41px] w-full justify-center items-center px-[50px]'>
