@@ -34,7 +34,7 @@ export default function TabTwoScreen() {
                 <View className='w-[40px] h-[40px] rounded-[10px] bg-[#F47B0A] justify-center items-center mr-[11px]'>
                   <Card/>
                 </View>
-                <Text className='text-[17px] font-medium'>Card</Text>
+                <Text className='text-[17px] font-[400]'>Card</Text>
               </View>
             </TouchableOpacity>
             <View className='py-[5px] w-full justify-end items-end'>
@@ -47,7 +47,7 @@ export default function TabTwoScreen() {
               <View className='w-[40px] h-[40px] rounded-[10px] bg-[#EB4796] justify-center items-center mr-[11px]'>
                 <Bank/>
               </View>
-              <Text className='text-[17px] font-medium'>Bank account</Text>
+              <Text className='text-[17px] font-[400]'>Bank account</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -59,7 +59,7 @@ export default function TabTwoScreen() {
                 <View className='w-[7px] h-[7px] bg-[#FA4A0C] rounded-full'></View>
               </View>
               <View className='w-[70%] flex-row'>
-                <Text className='text-[17px]'>Door delivery</Text>
+                <Text className='text-[17px] font-[400]'>Door delivery</Text>
               </View>
             </TouchableOpacity>
             <View className='py-[5px] w-full justify-end items-end'>
@@ -68,16 +68,16 @@ export default function TabTwoScreen() {
             <TouchableOpacity className='w-[262px] h-[45px] justify-start items-center flex-row'>
               <View className='w-[15px] h-[15px] rounded-full border-[1px] border-[#9F9F9F] justify-center items-center mr-[15px]'>
               </View>
-              <Text className='text-[17px]'>Pick up</Text>
+              <Text className='text-[17px] font-[400]'>Pick up</Text>
             </TouchableOpacity>
           </View>
         </View>
         <View className='mt-[38px] w-full max-w-[315px] flex-row justify-between items-center'>
           <Text className='font-semibold text-[22px]'>Total</Text>
-          <Text className='font-semibold text-[22px]'>23,000</Text>
+          <Text className='font-[700] text-[22px]'>23,000</Text>
         </View>
       </View>
-      <View className='absolute bottom-[41px] w-full justify-center items-center px-[50px]'>
+      <View className='absolute bottom-[51px] w-full justify-center items-center px-[50px]'>
         <TouchableOpacity className="bg-[#FA4A0C] w-full max-w-[314px] rounded-[30px] h-[70px] justify-center items-center" onPress={() => setPay(true)}>
           <Text className="text-center text-[#F6F6F9] font-semibold text-[17px]">Proceed to payment</Text>
         </TouchableOpacity>

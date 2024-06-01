@@ -5,7 +5,7 @@ import HomeFill from "../../assets/svg/navfillHome.svg"
 import Heart from "../../assets/svg/navHeart.svg" 
 import Avatar from "../../assets/svg/navAvatar.svg" 
 import Re from "../../assets/svg/navRe.svg" 
-import { View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -14,7 +14,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        tabBarStyle:{backgroundColor:"white"},
+        tabBarStyle:{backgroundColor:"#F2F2F2"},
         headerShown: false,
         tabBarShowLabel:false,
       }} initialRouteName='index'>
@@ -23,9 +23,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: () => (
-            <View className='shadow shadow-[#FA4A0C]'>
-              <HomeFill width={24} height={24}/>
-            </View>
+            <HomeFill style={styles.shadowBox} width={24} height={24}/>
           ),
         }}
       />
@@ -59,3 +57,22 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+
+const styles = StyleSheet.create({
+  shadowBox: {
+    paddingBottom:5,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'orange',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+      },
+      android: {
+        shadowColor:"orange",
+        elevation: 5,
+      },
+    }),
+  },
+});

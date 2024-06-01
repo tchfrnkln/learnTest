@@ -78,7 +78,7 @@ export default function TabTwoScreen() {
 
       <View className='mx-[50px]'>
         <View className='w-full max-w-[315px] flex flex-row justify-end'>
-          <View className='max-w-[315px] h-[102px] bg-[#FFFFFF] rounded-[20px] justify-start items-center flex-row relative mb-[17px]'>
+          <View className='w-[315px] h-[102px] bg-[#FFFFFF] rounded-[20px] justify-start items-center flex-row relative mb-[17px]'>
             <Image className='rounded-full mx-[16px]' width={70} height={70} source={foods[0].img} />
             <View>
               <Text className='font-semibold text-[17px]'>{foods[0].name}</Text>
@@ -104,7 +104,7 @@ export default function TabTwoScreen() {
         </View>
       </View>
 
-      <View className='absolute bottom-[41px] w-full justify-center items-center px-[50px]'>
+      <View className='absolute bottom-[51px] w-full justify-center items-center px-[50px]'>
         <TouchableOpacity className="bg-[#FA4A0C] w-full max-w-[314px] rounded-[30px] h-[70px] justify-center items-center" >
           <Text className="text-center text-[#F6F6F9] font-semibold text-[17px]">Complete Order</Text>
         </TouchableOpacity>
