@@ -5,12 +5,28 @@ import Bank from "../../assets/svg/bank.svg";
 import { Paystack } from "react-native-paystack-webview";
 import { useEffect, useState } from 'react';
 import { PAYSTACK_API_KEY } from '@/constants/Utils';
-import { createTransaction, handleSignInUser} from '@/api/transaction.request';
+import { createTransaction, generateOrder, getOrders, handleSignInUser} from '@/api/transaction.request';
 
 export default function TabTwoScreen() {
 
   const [pay, setPay] = useState(false)
-  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWY4Yzg0NGI5MWY1YzdiZmY0OWY1OSIsImlhdCI6MTcxNjcyMjc2OCwiZXhwIjoxNzE3MDIyNzY4fQ.MdRINh_f4nSTB2UjTHzL0Z55mh6CldE-m6KacNE8npU"
+
+  const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MWY4Yzg0NGI5MWY1YzdiZmY0OWY1OSIsImlhdCI6MTcxNzI2OTgyOCwiZXhwIjoxNzE3NTY5ODI4fQ.3p9YrWoT_rtf9P_JsyYwbAxqztg8SOQaY7OuH6ZnJvs"
+
+  useEffect(() => {
+    // handleSignInUser("hushjoezzybad@gmail.com", "TestOut1@")
+    // var order = {
+    //   deliveryId: "6638c7cee44a6277e2a3f9b8",
+    //   transactionId: "665b75ef80e526b9a65c6d82",
+    //   agentId: "661fa79c184d5841e93df625",
+    //   deliveryRequestTime: "2024-02-05 10:00 AM",
+    //   deliveryAcceptanceTime: "2024-03-25 10:00 AM",
+    //   pickupTime: "2024-03-26 2:00 PM",
+    //   orderStatus: "picked",
+    //   "delivery.agentEarnings":100
+    // };
+  }, [])
+  
   
   
   return (

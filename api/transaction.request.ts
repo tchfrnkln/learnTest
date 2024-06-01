@@ -1,5 +1,7 @@
 import { BASE_URL } from "@/constants/Utils";
+import { useOrders } from "@/zustand/store";
 
+const {setOrders, setOrderId} = useOrders()
 
 export const handleSignInUser = async (
   userEmail: string,
@@ -63,7 +65,8 @@ export const createTransaction = async (
         "deliveryRequestTime": "2024-02-05 10:00 AM",
         "deliveryAcceptanceTime": "2024-03-25 10:00 AM",
         "pickupTime": "2024-03-26 2:00 PM",
-        "orderStatus":"picked"
+        "orderStatus":"picked",
+        "delivery.agentEarnings":100
       }
       generateOrder(order, token)
     }
@@ -95,6 +98,8 @@ export const generateOrder = async (
 
     const data = await response.json();
 
+    getOrders(token, data.data.order._id)
+    setOrderId(data.data.order._id)
     console.log("Order Generated Successfully", data.data);
 
     var updateOrder = {
@@ -111,7 +116,7 @@ export const generateOrder = async (
   }
 };
 
-const updateOrderStatus = async (
+export const updateOrderStatus = async (
   payload:any,
   token:string, 
   order_id:string
@@ -137,3 +142,31 @@ const updateOrderStatus = async (
     console.error('Error updating order status:', error);
   }
 };
+
+export const getOrders = async (
+  token:string,
+  order_id:string
+) => {
+  try {
+    const response = await fetch(`${BASE_URL}orders/${order_id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+        sub_token: `${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw console.log(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    setOrders(data)
+    console.log('Orders:', data);    
+    return data
+  } catch (error) {
+    console.error('Error getting orders:', error);
+  }
+};
+
